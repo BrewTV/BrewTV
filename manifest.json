@@ -1,28 +1,34 @@
 {
-    "manifest_version": 3,
-    "name": "BrewTV",
-    "version": "1.0",
-    "description": "A free and open source Twitch plugin!",
-    "permissions": [
-      "https://brew.vanished.lol/*",
-      "https://www.twitch.tv/*",
-      "https://github.com/brewtv/brewtv/*"
-    ],
-    "background": {
-      "service_worker": "background.js"
-    },
-    "action": {
-      "default_popup": "popup.html",
-      "default_icon": {
-        "16": "icons/icon16.png",
-        "48": "icons/icon48.png",
-        "128": "icons/icon128.png"
-      }
-    },
-    "icons": {
+  "manifest_version": 2,
+  "name": "Brew Extension",
+  "version": "1.0",
+  "description": "Extension to interact with Brew sites and Twitch.",
+  "permissions": [
+    "https://brew.vanished.lol/*",
+    "https://www.twitch.tv/*",
+    "https://github.com/brewtv/brewtv/*"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.twitch.tv/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   }
-  
+}
